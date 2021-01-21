@@ -22,4 +22,4 @@ jobs:
     - name: Static analysis using cppcheck
       run:  cppcheck --enable=all  static.c
     - name: Static analysis using clang
-      run:  scan-build make
+      run:  clang static.c
