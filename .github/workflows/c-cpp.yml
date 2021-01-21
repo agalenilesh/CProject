@@ -13,9 +13,13 @@ jobs:
 
     steps:
     - name: Install dependencies
-      run: sudo apt-get install cppcheck
+      run: |
+           sudo apt-get install cppcheck
+           sudo apt-get install llvm clang
     - uses: actions/checkout@v2
     - name: make
       run: make
-    - name: Static analysis
+    - name: Static analysis using cppcheck
       run:  cppcheck --enable=all  static.c
+    - name: Static analysis using clang
+      run:  scan-build make
