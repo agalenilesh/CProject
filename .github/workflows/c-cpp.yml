@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install dependencies
+      run: sudo apt-get install cppcheck
     - uses: actions/checkout@v2
     - name: make
       run: make
+    - name: Static analysis
+      run:  cppcheck --enable=all  static.c
